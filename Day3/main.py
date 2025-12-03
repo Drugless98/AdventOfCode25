@@ -28,39 +28,6 @@ def timeExecution(label: str | None = None):
         return wrapper
     return decorator
 
-def quickSort(arr, fst, lst):
-    #: Helper function 
-    def swap(arr, i, j):
-        arr[i], arr[j] = arr[j], arr[i]
-
-    def partition(arr, low, high):
-        pivot = arr[high]
-        i = low - 1
-        
-        # traverse arr[fst..lst]
-        for j in range(low, high):
-            if arr[j] < pivot:
-                i += 1
-                swap(arr, i, j)
-        
-        # move pivot after smaller elements and
-        # return its position
-        swap(arr, i + 1, high)
-        return i + 1
-
-    #: Code Entry
-    if fst >= lst:
-        return
-    pi = partition(arr, fst, lst)
-
-    ###: recursion calls for smaller elements
-    ###: and greater or equals elements
-    quickSort(arr, fst, pi - 1)
-    quickSort(arr, pi + 1, lst)
-    return arr
-
-
-
 #: SOLUTIONS
 class Solution:
     def __init__(self) -> None:
